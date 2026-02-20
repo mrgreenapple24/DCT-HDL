@@ -24,7 +24,7 @@ module DCT_4_8(
 
     wire signed [17:0] x1, x3, x5, x7, x9, x11, x13, x15;
     DCT_building_block #(.m(1), .COEFF(502)) bb3a (.clk(clk), .reset(reset), .top_in_flat(s2_tt[17:0]), .bot_in_flat(s2_tt[35:18]), .top_out_flat(x1),  .bot_out_flat(x3));
-    DCT_building_block #(.m(1), .COEFF(50))  bb3b (.clk(clk), .reset(reset), .top_in_flat(s2_tb[17:0]), .bot_in_flat(s2_tb[35:18]), .top_out_flat(x5),  .bot_out_flat(x7));
+    DCT_building_block #(.m(1), .COEFF(100))  bb3b (.clk(clk), .reset(reset), .top_in_flat(s2_tb[17:0]), .bot_in_flat(s2_tb[35:18]), .top_out_flat(x5),  .bot_out_flat(x7));
     DCT_building_block #(.m(1), .COEFF(425)) bb3c (.clk(clk), .reset(reset), .top_in_flat(s2_bt[17:0]), .bot_in_flat(s2_bt[35:18]), .top_out_flat(x9),  .bot_out_flat(x11));
     DCT_building_block #(.m(1), .COEFF(284)) bb3d (.clk(clk), .reset(reset), .top_in_flat(s2_bb[17:0]), .bot_in_flat(s2_bb[35:18]), .top_out_flat(x13), .bot_out_flat(x15));
 
