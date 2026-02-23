@@ -1,0 +1,98 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
+| Date         : Sat Feb 21 23:05:03 2026
+| Host         : CHOKI running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file DCT_control_sets_placed.rpt
+| Design       : DCT
+| Device       : xc7z010
+------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    20 |
+|    Minimum number of control sets                        |    20 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |    16 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    20 |
+| >= 0 to < 4        |     1 |
+| >= 4 to < 6        |     1 |
+| >= 6 to < 8        |     1 |
+| >= 8 to < 10       |    14 |
+| >= 10 to < 12      |     0 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     0 |
+| >= 16              |     3 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |               3 |            2 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |             901 |          256 |
+| Yes          | No                    | No                     |             128 |           46 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |              48 |           25 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++----------------+--------------------------------------+----------------------------------+------------------+----------------+--------------+
+|  Clock Signal  |             Enable Signal            |         Set/Reset Signal         | Slice Load Count | Bel Load Count | Bels / Slice |
++----------------+--------------------------------------+----------------------------------+------------------+----------------+--------------+
+|  clk_IBUF_BUFG |                                      |                                  |                2 |              3 |         1.50 |
+|  clk_IBUF_BUFG | input_buf/count0                     | reset_IBUF                       |                2 |              4 |         2.00 |
+|  clk_IBUF_BUFG | serializer_inst/IDX_A[3]_i_2_n_0     | serializer_inst/IDX_A[3]_i_1_n_0 |                3 |              7 |         2.33 |
+|  clk_IBUF_BUFG | input_buf/x_internal[10][17]_i_1_n_0 |                                  |                4 |              8 |         2.00 |
+|  clk_IBUF_BUFG | input_buf/x_internal[12][17]_i_1_n_0 |                                  |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG | input_buf/x_internal[1][17]_i_1_n_0  |                                  |                4 |              8 |         2.00 |
+|  clk_IBUF_BUFG | input_buf/x_internal[3][17]_i_1_n_0  |                                  |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG | input_buf/x_internal[11][17]_i_1_n_0 |                                  |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG | input_buf/x_internal[4][17]_i_1_n_0  |                                  |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG | input_buf/x_internal[14][17]_i_1_n_0 |                                  |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG | input_buf/x_internal[13][17]_i_1_n_0 |                                  |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG | input_buf/x_internal[6][17]_i_1_n_0  |                                  |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG | input_buf/x_internal[2][17]_i_1_n_0  |                                  |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG | input_buf/x_internal[7][17]_i_1_n_0  |                                  |                2 |              8 |         4.00 |
+|  clk_IBUF_BUFG | input_buf/x_internal[8][17]_i_1_n_0  |                                  |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG | input_buf/x_internal[9][17]_i_1_n_0  |                                  |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG | input_buf/x_internal[5][17]_i_1_n_0  |                                  |                3 |              8 |         2.67 |
+|  clk_IBUF_BUFG | input_buf/x_internal[0][17]_i_1_n_0  |                                  |                5 |             16 |         3.20 |
+|  clk_IBUF_BUFG | serializer_inst/OUT_A[17]_i_1_n_0    | reset_IBUF                       |               20 |             37 |         1.85 |
+|  clk_IBUF_BUFG |                                      | reset_IBUF                       |              256 |            901 |         3.52 |
++----------------+--------------------------------------+----------------------------------+------------------+----------------+--------------+
+
+

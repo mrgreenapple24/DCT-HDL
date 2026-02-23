@@ -19,12 +19,8 @@ module DCT_building_block #(
             assign top_in[k] = top_in_flat[k*18 +: 18];
             assign bot_in[k] = bot_in_flat[k*18 +: 18];
 
-            // Python: inter_top = top - bot[::-1]
-            // We subtract the mirrored index for the top branch
             assign inter_top[k] = top_in[k] - bot_in[m-1-k];
 
-            // Python: inter_bot = coeff * original_bot
-            // Use a temporary 36-bit wire to handle the Q.8 multiplication
             wire signed [35:0] prod = bot_in[k] * $signed({1'b0, COEFF[16:0]});
             assign inter_bot[k] = prod[25:8];
         end

@@ -1,0 +1,34 @@
+Gemini said
+To help you finish your report for the ZedBoard Zynq-7000, here is the structured architectural summary for your document. This section covers the "Brief Summary" deliverable using the 18-bit rounded design we finalized.
+
+1. Architectural Summary
+Design Overview
+The architecture implements a 16-point Fast DCT engine based on a decimated butterfly structure. It is designed to process 16 input samples and produce 16 frequency-domain coefficients using a hardware-efficient approach that minimizes the number of required multiplications. The data path utilizes 18-bit signed fixed-point (Q.8) arithmetic to ensure high precision and prevent bit-overflow during the calculation of the DC component
+
+Resource Utilization (Arithmetic Units)
+Multipliers: 17 total. These are inferred as DSP48E1 slices on the Zynq-7000.
+
+Adders/Subtractors: Approximately 52. This includes the initial 16-point input butterfly, internal stage-specific butterflies, and the addition/subtraction pairs within the DCT_building_block modules. Carry-4 : 253, LUT - 1218
+
+Output Size: The output width is 18 bits signed. This bit-depth was chosen to accommodate the magnitude growth of the DC coefficient, which can reach values up to 176.0 (45,056 in Q.8) for the given input range.
+
+Pipelining and FSMs
+Input FSM: A 4-bit counter-based state machine in the DCT_input_buffer manages the loading of 16 samples over 8 clock cycles (2 samples per cycle).
+
+Pipeline Stages: The design features a 6-stage processing pipeline. This includes:
+
+1 stage for the initial butterfly and buffer hand-off.
+
+4 stages for the sequential building block rotations (Layers 2 through 4).
+
+1 stage for final core output synchronization.
+
+Output FSM: A 3-bit counter-based state machine in the output_serializer handles the streaming of the 16 results across 8 clock cycles once the data_valid signal is asserted.
+
+This implementation takes 29 clock cycles to complete
+Input Loading - 8 cycles
+Porcessing Latency - 13 cycles
+Output Streaming - 8 cycles
+
+Unfortunately I did not see that we have to use 10 ns as our clock cycle and ended up using 20 ns
+apologies for that
